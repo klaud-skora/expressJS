@@ -5,4 +5,23 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  background-color: bisque;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
 }
