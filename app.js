@@ -3,7 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cookieSession = require('cookie-session')
 
+const sessionConfig = require('./config');
 const indexRouter = require('./routes/index');
 const newsRouter = require('./routes/news');
 const quizRouter = require('./routes/quiz');
@@ -15,6 +17,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(cookieSession({
+  name: 'session',
+  keys: sessionConfig.keysSession,
+  maxAge: sessionConfig.maxAgeSession, // 1 day
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

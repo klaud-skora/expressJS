@@ -16,7 +16,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  background-color: bisque;
+  background-color: #e1e1e1;
   justify-content: space-between;
   padding: 30px;
 }
@@ -24,4 +24,18 @@ ul {
 .active {
   color: green;
   font-weight: bold;
+}
+
+.login_header,
+form {
+  width: 100%;
+  text-align: center;
+}
+
+.form_field {
+  margin-bottom: 10px;
+}
+
+.error { 
+  color: red;
 }
