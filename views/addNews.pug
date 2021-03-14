@@ -3,14 +3,18 @@ extends layout
 block content 
   h3 Adding news 
 
+  if errors && errors.errors
+    each error in errors.errors
+      p(class="error")= error
+
   div(class='add_article_wrapper')
     form(method='post') 
       div(class="form_field")
         p
           label Title 
-        input(type=text name='title')
+        input(type=text name='title' value=title || "")
       div(class='form_field')
         p 
           label Description 
-        textarea(name='content', cols='30', rows='10') 
+        textarea(name='content', cols='30', rows='10')= content || ""
       input(type='submit' value='submit')
