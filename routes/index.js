@@ -19,6 +19,7 @@ router.post('/login', (req, res) => {
   const { login, password } = req.body;
   
   if (login === loginSet && password === passwordSet) {
+    req.session.admin = 1;
     res.redirect('/admin');
   } else res.render('login', { header: 'Enter your login and password to login', error: "Used data is not correct" });
 

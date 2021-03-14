@@ -4,12 +4,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cookieSession = require('cookie-session')
+var mongoose = require('mongoose');
 
 const sessionConfig = require('./config');
 const indexRouter = require('./routes/index');
 const newsRouter = require('./routes/news');
 const quizRouter = require('./routes/quiz');
 const adminRouter = require('./routes/admin');
+
+mongoose.connect(sessionConfig.db, { useNewUrlParser: true });
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', () => {
+  console.log('db connect');
+})
 
 var app = express();
 
