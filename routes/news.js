@@ -3,14 +3,18 @@ const News = require('../models/news');
 
 const router = express.Router();
 
-/* GET users listing. */
 router.get('/', (req, res, next) => {
-  let allNews;
-  News.find({}, (err, data) => {
-    console.log(err)
-    allNews = data;
-    res.render('news', { admin: req.session.admin, allNews });
+  const search = req.query.search || '';
+  const all = News
+  .find({ title: new RegExp(search.trim(), 'i') })
+  .sort({ createdDt: -1 });
+  all.exec((err, data) => {
+    res.render('news', { admin: req.session.admin, allNews: data, searchString: search });
   });
+
+
+  // News.find({}, (err, data) => {
+  // });
 });
 
 router.get('/add', (req, res, next) => {
