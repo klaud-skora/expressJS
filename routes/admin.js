@@ -1,4 +1,7 @@
 const express = require('express');
+
+const News = require('../models/news'); 
+
 const router = express.Router();
 
 router.all('*', (req, res, next) => {

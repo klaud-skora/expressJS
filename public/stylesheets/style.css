@@ -39,3 +39,22 @@ form {
 .error { 
   color: red;
 }
+
+.add_article_wrapper {
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 1px 1px 1px #e3e3e3;
+  padding: 10px 15px;
+}
+
+.visible {
+  box-sizing: border-box;
+  text-align: right;
+  width: 100%;
+  display: block;
+  padding: 4px;
+}
+
+.invisible {
+  display: none;
+}

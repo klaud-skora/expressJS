@@ -1,5 +1,7 @@
 extends layout 
 
 block content
+  div(class=admin ? 'visible' : 'invisible')
+    a(href="/news/add") Add
   h1= title
   p Welcome to News
