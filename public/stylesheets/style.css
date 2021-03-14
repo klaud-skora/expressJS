@@ -3,6 +3,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+div {
+  position: relative;
+}
+
 a {
   color: #00B7FF;
   text-decoration: none;
@@ -47,6 +51,12 @@ form {
   padding: 10px 15px;
 }
 
+.news_document {
+  padding: 10px 15px;
+  border: 1px solid pink;
+  margin-bottom: 15px;
+}
+
 .visible {
   box-sizing: border-box;
   text-align: right;
@@ -57,4 +67,11 @@ form {
 
 .invisible {
   display: none;
+}
+
+.admin_remover {
+  position: absolute;
+  top: 5px;
+  font-weight: bold;
+  right: 10px;
 }

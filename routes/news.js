@@ -1,12 +1,16 @@
 const express = require('express');
-const news = require('../models/news');
 const News = require('../models/news');
 
 const router = express.Router();
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
-  res.render('news', { admin: req.session.admin });
+  let allNews;
+  News.find({}, (err, data) => {
+    console.log(err)
+    allNews = data;
+    res.render('news', { admin: req.session.admin, allNews });
+  });
 });
 
 router.get('/add', (req, res, next) => {
@@ -32,10 +36,25 @@ router.post('/add', (req, res) => {
 
   newDocument.save((err) => {
     console.log(err);
-    if (!err) res.redirect('/news');
-    else res.render('addNews', { errors: { errors: ['Could not connect to db, sth went wrong'] }, title, content });
+    if (!err) {
+      res.redirect('/news');
+    }
+    else {
+      res.render('addNews', { errors: { errors: ['Could not connect to db, sth went wrong'] }, title, content });
+      return;
+    }
   });
   
+});
+
+router.get('/delete/:id', (req, res, next) => {
+
+  News.findByIdAndDelete(req.params.id, (err) => {
+
+    res.redirect('/news');
+
+  });
+
 });
 
 module.exports = router;
