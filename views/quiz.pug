@@ -3,3 +3,22 @@ extends layout
 block content
   h1= title 
   p Quiz it is
+
+  if (!isVoted)
+    p Pick your favourite season
+    form(method="post")
+      ul 
+        each season in data 
+          li 
+            input(type="radio" name="answer" value=season._id)
+            span= season.title
+      input(type="submit" value="Vote")
+  else
+    p You already have voted for favourite season
+    ul
+      each season in data
+        li 
+          div 
+            p Season: #{season.title}  - votes: #{season.votes} (#{Math.round((season.votes/sum) * 100)}%)
+
+    p All votes: #{sum}
