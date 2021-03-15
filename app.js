@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 const sessionConfig = require('./config');
 const indexRouter = require('./routes/index');
+const apiRouter = require('./routes/api');
 const newsRouter = require('./routes/news');
 const quizRouter = require('./routes/quiz');
 const adminRouter = require('./routes/admin');
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/news', newsRouter);
+app.use('/api', apiRouter);
 app.use('/quiz', quizRouter);
 app.use('/admin', adminRouter);
 
